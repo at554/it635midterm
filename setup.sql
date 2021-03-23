@@ -23,7 +23,7 @@ CREATE TABLE department
 
 CREATE TABLE sales
 (
-	employeeid	INT, FOREIGN KEY references employees, FOREIGN KEY references department,
+	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY references employees, FOREIGN KEY references department,
 	sales_total	INT, FOREEIGN KEY references department,
 	PPS		INT,
 	commission	INT
