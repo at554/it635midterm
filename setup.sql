@@ -13,7 +13,7 @@ CREATE TABLE employees
 
 CREATE TABLE department
 (
-	empDep		VARCAR(40), NOT NULL PRIMARY KEY,
+	empDep		VARCHAR(40), NOT NULL PRIMARY KEY,
 	employeeid	INT, FOREIGN KEY references employees, FOREIGN KEY references sales,
 	empName		VARCHAR(40), FOREIGN KEY references employees,
 	tasks		VARCHAR(40),
@@ -24,7 +24,7 @@ CREATE TABLE department
 CREATE TABLE sales
 (
 	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY references employees, FOREIGN KEY references department,
-	sales_total	INT, FOREEIGN KEY references department,
+	sales_total	INT, FOREIGN KEY references department,
 	PPS		INT,
 	commission	INT
 );
