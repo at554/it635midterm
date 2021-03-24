@@ -3,9 +3,9 @@ CREATE TABLE employees
 	/*example1 - email VARCHAR(255) PRIMARY KEY;*/
 	/*example2 - hash VARCHAR (255) NOT NULL;*/
 	
-	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY references sales, FOREIGN KEY references department,
-	empName		VARCHAR(40), FOREIGN KEY references department,
-	empDep		VARCHAR(40), FOREIGN KEY references department,
+	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY REFERENCES sales(employeeid), FOREIGN KEY REFERENCES department(employeeid),
+	empName		VARCHAR(40), FOREIGN KEY REFERENCES department(empName),
+	empDep		VARCHAR(40), FOREIGN KEY REFERENCES department(empDep),
 	empAddr		VARCHAR(40),
 	empPhone	VARCHAR(40)
 );
@@ -13,18 +13,18 @@ CREATE TABLE employees
 
 CREATE TABLE department
 (
-	empDep		VARCHAR(40), NOT NULL PRIMARY KEY,
-	employeeid	INT, FOREIGN KEY references employees, FOREIGN KEY references sales,
-	empName		VARCHAR(40), FOREIGN KEY references employees,
+	empDep		VARCHAR(40), NOT NULL PRIMARY KEY, FOREIGN KEY REFERENCES employees(empDep,)
+	employeeid	INT, FOREIGN KEY REFERENCES employees(employeeid), FOREIGN KEY REFERENCES sales(employeeid),
+	empName		VARCHAR(40), FOREIGN KEY REFERENCES employees(empName),
 	tasks		VARCHAR(40),
-	PPS		INT, FOREIGN KEY references sales
+	PPS		INT, FOREIGN KEY REFERENCES sales(PPS)
 );
 
 
 CREATE TABLE sales
 (
-	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY references employees, FOREIGN KEY references department,
-	sales_total	INT, FOREIGN KEY references department,
+	employeeid	INT, NOT NULL PRIMARY KEY, FOREIGN KEY REFERENCES employees(employeeid), FOREIGN KEY REFERENCES department(employeeid),
+	sales_total	INT, FOREIGN KEY REFERENCES department(empDep),
 	PPS		INT,
 	commission	INT
 );
@@ -71,9 +71,8 @@ INSERT INTO sales
 VALUES (4, 7, 70, " ");
 
 
-/*Insert terminal form to inputted data somewhere here*/
 
 
-/*ALTER ROLE manager WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;*/
+ALTER ROLE manager WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS;
 
-/*SELECT statement goes here*/
+
