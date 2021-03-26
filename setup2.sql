@@ -18,7 +18,7 @@ CREATE TABLE employees
 CREATE TABLE department
 (
 	depID		INT PRIMARY KEY, FOREIGN KEY REFERENCES sales(depID),
-	empDep	VARCHAR(40),
+	empDep		VARCHAR(40),
 	employeeid	INT, FOREIGN KEY REFERENCES employees(employeeid)
 );
 

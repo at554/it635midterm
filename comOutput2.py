@@ -24,15 +24,15 @@ sql2 ='''CREATE TABLE employees
 
 CREATE TABLE department
 (
-	depID	INT PRIMARY KEY, FOREIGN KEY REFERENCES sales(depID),
-	empDep	VARCHAR(40),
+	depID		INT PRIMARY KEY, FOREIGN KEY REFERENCES sales(depID),
+	empDep		VARCHAR(40),
 	employeeid	INT, FOREIGN KEY REFERENCES employees(employeeid)
 );
 
 
 CREATE TABLE sales
 (
-	depID	INT, UNIQUE NOT NULL, PRIMARY KEY, FOREIGN KEY REFERENCES department(depID),
+	depID		INT, UNIQUE NOT NULL, PRIMARY KEY, FOREIGN KEY REFERENCES department(depID),
 	PPS		INT
 );
 
